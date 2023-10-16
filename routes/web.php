@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ComentarioController;
+use App\Http\Controllers\Curso\RegisterController as CursoRegisterController;
 use App\Http\Controllers\FollowerController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ImagenController;
@@ -23,11 +24,14 @@ use App\Http\Controllers\RegisterController;
 |
 */
 
-//Route::get('/', HomeController::class)->name('home');
-Route::get('/', function () {
-    return view('test');
-});
 
+// CURSO
+Route::get('/curso/crear-cuenta', [CursoRegisterController::class, 'index'])->name('registro');
+Route::post('/curso/crear-cuenta', [CursoRegisterController::class, 'store']);
+
+// DEVSTAGRAM
+Route::get('/', HomeController::class)->name('home');
+Route::get('/', HomeController::class)->name('home');
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::post('/register', [RegisterController::class, 'store']);
 
